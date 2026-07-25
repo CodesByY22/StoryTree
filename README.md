@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Turborepo starter
 
 This Turborepo starter is maintained by the Turborepo core team.
@@ -157,3 +158,7 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
 - [Configuration Options](https://turborepo.dev/docs/reference/configuration)
 - [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+=======
+# StoryTree
+A collaborative storytelling platform where one prompt inspires hundreds of unique stories.
+>>>>>>> 31c8c5345211dfcf06c2e7feddecd35ba8baa58e
