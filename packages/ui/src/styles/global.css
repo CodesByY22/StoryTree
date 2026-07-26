@@ -1,6 +1,7 @@
 /* StoryTree Global Styles (Master Entry Point) */
 
 @import "tailwindcss";
+@source "../";
 
 @import "./primitives.css";
 @import "./semantics.css";
