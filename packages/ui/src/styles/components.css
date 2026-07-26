@@ -2,5 +2,166 @@
 /* This file maps semantic tokens to specific component properties. */
 
 @layer components {
-  /* Phase 2: Add component-specific CSS variables (e.g. .btn { --btn-bg: ... }) */
+  :root {
+    /* ----------------------------------------------------- */
+    /* COMPONENT TOKENS (Tier 3)                             */
+    /* ----------------------------------------------------- */
+
+    /* 1. BUTTONS */
+    /* Dimensions & Structural Identity */
+    --button-height-sm: var(--space-8);
+    --button-height-md: var(--space-10);
+    --button-height-lg: var(--space-12);
+    --button-padding-x: var(--space-4);
+    --button-border-width: var(--border-width-1);
+    --button-transition: var(--motion-normal);
+    --button-disabled-opacity: var(--opacity-disabled);
+
+    /* Primary */
+    --button-primary-bg: var(--text-primary);
+    --button-primary-text: var(--text-inverse);
+    --button-primary-border: var(--text-primary);
+    --button-primary-hover: var(--interactive-hover);
+    --button-primary-active: var(--interactive-pressed);
+
+    /* Secondary */
+    --button-secondary-bg: var(--surface-raised);
+    --button-secondary-text: var(--text-primary);
+    --button-secondary-border: var(--border-default);
+    --button-secondary-hover: var(--interactive-hover);
+    --button-secondary-active: var(--interactive-pressed);
+
+    /* Ghost */
+    --button-ghost-text: var(--text-secondary);
+    --button-ghost-hover: var(--interactive-hover);
+    --button-ghost-active: var(--interactive-pressed);
+
+    /* Outline */
+    --button-outline-text: var(--text-primary);
+    --button-outline-border: var(--border-strong);
+    --button-outline-hover: var(--interactive-hover);
+    --button-outline-active: var(--interactive-pressed);
+
+    /* Destructive */
+    --button-destructive-bg: var(--semantic-error);
+    --button-destructive-text: var(--text-inverse);
+    --button-destructive-hover: var(--interactive-hover);
+    --button-destructive-active: var(--interactive-pressed);
+
+    /* Success */
+    --button-success-bg: var(--semantic-success);
+    --button-success-text: var(--text-inverse);
+    --button-success-hover: var(--interactive-hover);
+    --button-success-active: var(--interactive-pressed);
+
+    /* States */
+    --button-disabled-bg: var(--surface-sunken);
+    --button-disabled-text: var(--text-disabled);
+    --button-focus-ring: var(--interactive-focus);
+
+
+    /* 2. INPUTS */
+    /* Dimensions & Structural Identity */
+    --input-height-md: var(--space-10);
+    --input-padding-x: var(--space-3);
+    --input-border-width: var(--border-width-1);
+    --input-transition: var(--motion-fast);
+
+    --input-bg: var(--surface-base);
+    --input-border: var(--border-default);
+    --input-text: var(--text-primary);
+    --input-placeholder: var(--text-tertiary);
+    --input-label: var(--text-secondary);
+    --input-focus-border: var(--interactive-focus);
+    --input-focus-ring: var(--interactive-focus);
+    --input-error-border: var(--semantic-error);
+    --input-disabled-bg: var(--surface-sunken);
+    --input-disabled-text: var(--text-disabled);
+
+
+    /* 3. CARDS */
+    /* Dimensions & Structural Identity */
+    --card-padding: var(--space-6);
+    --card-border-width: var(--border-width-1);
+
+    --card-bg: var(--surface-raised);
+    --card-border: var(--border-subtle);
+    --card-shadow: var(--shadow-raised);
+    --card-radius: var(--radius-container);
+    --card-header-bg: var(--surface-base);
+    --card-header-border: var(--border-subtle);
+    --card-footer-bg: var(--surface-base);
+    --card-footer-border: var(--border-subtle);
+
+
+    /* 4. BADGES */
+    /* Dimensions & Structural Identity */
+    --badge-height: var(--space-6);
+    --badge-padding-x: var(--space-2);
+    --badge-border-width: var(--border-width-1);
+
+    --badge-default-bg: var(--surface-overlay);
+    --badge-default-text: var(--text-secondary);
+    --badge-success-bg: var(--semantic-success);
+    --badge-success-text: var(--text-inverse);
+    --badge-warning-bg: var(--semantic-warning);
+    --badge-warning-text: var(--text-inverse);
+    --badge-error-bg: var(--semantic-error);
+    --badge-error-text: var(--text-inverse);
+    --badge-info-bg: var(--semantic-info);
+    --badge-info-text: var(--text-inverse);
+
+
+    /* 5. DIALOGS */
+    /* Dimensions & Structural Identity */
+    --dialog-padding: var(--space-6);
+    --dialog-transition: var(--motion-spring);
+
+    --dialog-overlay: var(--surface-glass);
+    --dialog-surface: var(--surface-raised);
+    --dialog-header-bg: var(--surface-raised);
+    --dialog-footer-bg: var(--surface-base);
+    --dialog-border: var(--border-subtle);
+    --dialog-shadow: var(--shadow-overlay);
+    --dialog-radius: var(--radius-container);
+
+
+    /* 6. NAVIGATION */
+    /* Dimensions & Structural Identity */
+    --nav-height: var(--space-16);
+    --nav-sidebar-width: var(--width-sidebar);
+
+    --nav-bg: var(--surface-base);
+    --nav-border: var(--border-subtle);
+    --nav-sidebar-bg: var(--surface-sunken);
+    --nav-sidebar-border: var(--border-subtle);
+    --nav-link-text: var(--text-secondary);
+    --nav-link-hover-text: var(--text-primary);
+    --nav-link-hover-bg: var(--interactive-hover);
+    --nav-link-active-text: var(--text-accent);
+    --nav-link-active-bg: var(--interactive-selected);
+
+
+    /* 7. AVATAR */
+    --avatar-bg: var(--surface-raised);
+    --avatar-border: var(--border-subtle);
+    --avatar-placeholder: var(--text-tertiary);
+    --avatar-radius: var(--radius-round);
+
+
+    /* 8. TOOLTIPS */
+    /* Dimensions & Structural Identity */
+    --tooltip-padding-x: var(--space-2);
+    --tooltip-padding-y: var(--space-1);
+    --tooltip-transition: var(--motion-fast);
+
+    --tooltip-surface: var(--text-primary);
+    --tooltip-text: var(--text-inverse);
+    --tooltip-border: var(--border-default);
+    --tooltip-shadow: var(--shadow-raised);
+    --tooltip-radius: var(--radius-action);
+  }
 }
+
+
+

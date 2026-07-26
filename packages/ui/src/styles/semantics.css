@@ -51,6 +51,14 @@
   --semantic-genre-literary: var(--color-genre-literary);
   --semantic-genre-comedy: var(--color-genre-comedy);
   --semantic-genre-drama: var(--color-genre-drama);
+
+  /* 7. Structural Semantics */
+  --radius-container: var(--radius-lg);
+  --radius-component: var(--radius-md);
+  --radius-action: var(--radius-sm);
+  --radius-round: var(--radius-full);
+  --shadow-overlay: var(--shadow-xl);
+  --shadow-raised: var(--shadow-sm);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -104,5 +112,13 @@
     --semantic-genre-literary: var(--color-genre-literary);
     --semantic-genre-comedy: var(--color-genre-comedy);
     --semantic-genre-drama: var(--color-genre-drama);
+
+    /* 7. Structural Semantics */
+    --radius-container: var(--radius-lg);
+    --radius-component: var(--radius-md);
+    --radius-action: var(--radius-sm);
+    --radius-round: var(--radius-full);
+    --shadow-overlay: var(--shadow-xl); /* Could be adjusted for dark mode, e.g. a lighter shadow or none with border */
+    --shadow-raised: var(--shadow-sm);
   }
 }

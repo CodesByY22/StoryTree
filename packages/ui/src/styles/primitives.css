@@ -113,6 +113,10 @@
   --icon-lg: 24px;
   --icon-xl: 32px;
 
+  /* 6b. Border Widths */
+  --border-width-1: 1px;
+  --border-width-2: 2px;
+
   /* 7. Z-Index */
   --z-base: 0;
   --z-elevated: 10;

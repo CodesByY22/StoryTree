@@ -90,12 +90,12 @@ Naming is the most critical aspect of a maintainable token system. We enforce a 
 
 These principles form the formal engineering standard for StoryTree's UI development:
 
-1. **Never hardcode visual values inside components.** All colors, spacing, and typography must reference tokens.
-2. **Components consume Component Tokens.** Avoid using Semantic tokens inside complex components to prevent side effects.
-3. **Component Tokens consume Semantic Tokens.**
+1. **Never hardcode visual values inside components.** All colors, internal padding, and typography must reference tokens.
+2. **Components consume Component Tokens.** Avoid using Semantic tokens inside complex components to prevent side effects, unless for cross-cutting concerns like z-index or typography.
+3. **Component Tokens consume Semantic Tokens.** However, structural component tokens (padding, border-width, motion) may directly consume primitive tokens.
 4. **Semantic Tokens consume Primitive Tokens.**
 5. **Primitive Tokens never reference other Primitive Tokens.**
-6. **Components may never reference Primitive Tokens directly.**
+6. **Components may use Tailwind Layout Utilities.** While component *identity* (colors, internal padding) uses Component Tokens, external layout (margins, gaps, flex/grid, positioning) should use standard Tailwind utility classes (which map to primitives).
 7. **Design Tokens are the single source of truth.** If it's not a token, it doesn't exist in the product.
 8. **Consistency is preferred over convenience.** Do not invent "one-off" pixel values or hex codes for a specific feature.
 
@@ -121,18 +121,18 @@ These principles form the formal engineering standard for StoryTree's UI develop
 **Can:**
 - ✔ Override semantics for specific component needs.
 - ✔ Customize component appearance dynamically.
+- ✔ Reference structural primitive tokens directly for dimensions, motion, and opacity.
 **Cannot:**
-- ✖ Reference primitive tokens directly.
+- ✖ Reference primitive colors directly.
 
 ### React Components (UI Layer)
 **Can:**
 - ✔ Consume component tokens (via Tailwind classes or CSS variables).
 - ✔ Contain behavior, interaction, and accessibility (a11y) logic.
+- ✔ Use standard Tailwind utilities (`flex`, `gap-4`, `p-6`) for layout and page composition.
 **Cannot:**
 - ✖ Hardcode colors (`bg-[#FF0000]`).
-- ✖ Hardcode spacing (`p-[15px]`).
-- ✖ Hardcode typography sizes.
-- ✖ Hardcode shadows or border radii.
+- ✖ Hardcode shadows or border radii manually outside of Tailwind or tokens.
 
 ---
 
