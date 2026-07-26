@@ -157,14 +157,32 @@ pnpm check-types
 
 ## 📖 Documentation
 
-All technical specifications live inside the `../mdFiles` directory (and root project context docs).
+All project documentation lives inside the `/docs` directory.
 
-- Product Vision
-- Design System
-- Technical Architecture
-- API Design
-- Database Design
-- Engineering Roadmap
+### Product
+- [Project Context](./docs/product/PROJECT_CONTEXT.md)
+- [Roadmap](./docs/product/ROADMAP.md)
+- [Vision](./docs/product/vision.md)
+- [Product Principles](./docs/product/product_principles.md)
+
+### Architecture
+- [System Architecture](./docs/architecture/system_architecture.md)
+- [Design System](./docs/architecture/design_system.md)
+- [Design Token Architecture](./docs/architecture/design_token_architecture.md)
+- [Design System Pages](./docs/architecture/design_system_pages.md)
+- [Design System Components](./docs/architecture/design_system_components.md)
+- [Design System Checklist](./docs/architecture/design_system_checklist.md)
+
+### Engineering
+- [Coding Standards](./docs/engineering/coding_standards.md)
+- [Repository Structure](./docs/engineering/repository_structure.md)
+- [Contribution Guide](./docs/engineering/contribution_guide.md)
+- [AI Rules](./docs/engineering/AI_RULES.md)
+
+### Architecture Decisions
+- [ADR 001: Authentication](./docs/decisions/ADR-001-authentication.md)
+- [ADR 002: Storage](./docs/decisions/ADR-002-storage.md)
+- [ADR 003: Design System](./docs/decisions/ADR-003-design-system.md)
 
 ---
 
