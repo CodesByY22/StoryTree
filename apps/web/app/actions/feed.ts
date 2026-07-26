@@ -73,9 +73,21 @@ export async function toggleLike(storyId: string, userId: string) {
       where: { id: existing.id },
     });
   } else {
-    await prisma.like.create({
+    const like = await prisma.like.create({
       data: { storyId, userId },
+      include: { story: { select: { authorId: true } } },
     });
+
+    if (like.story.authorId !== userId) {
+      await prisma.notification.create({
+        data: {
+          userId: like.story.authorId,
+          actorId: userId,
+          type: "LIKE",
+          storyId,
+        },
+      });
+    }
   }
 
   revalidatePath("/feed");

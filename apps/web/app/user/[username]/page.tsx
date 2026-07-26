@@ -1,6 +1,11 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@repo/db";
 import { Avatar, Card, CardContent, CardHeader, Heading, Text, Badge } from "@repo/ui";
+import { auth } from "../../../lib/auth";
+import { headers } from "next/headers";
+import { getFollowStats, checkIsFollowing } from "../../actions/social";
+import { ProfileFollowButton } from "./ProfileFollowButton";
+import { AppNavbar } from "../../components/AppNavbar";
 
 interface ProfilePageProps {
   params: Promise<{
@@ -10,14 +15,33 @@ interface ProfilePageProps {
 
 export default async function UserProfilePage({ params }: ProfilePageProps) {
   const { username } = await params;
+  
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  const currentUserId = session?.user?.id;
 
   const user = await prisma.user.findUnique({
     where: { username },
+    include: {
+      _count: {
+        select: {
+          stories: { where: { status: "PUBLISHED" } },
+        }
+      }
+    }
   });
 
   if (!user) {
     notFound();
   }
+
+  // Get follow stats
+  const { followers, following } = await getFollowStats(user.id);
+  const isFollowing = currentUserId ? await checkIsFollowing(user.id) : false;
+
+  // Get total likes received
+  const totalLikes = await prisma.like.count({ where: { story: { authorId: user.id } } });
 
   // Parse favorite genres if available
   const genres = user.favoriteGenres
@@ -25,7 +49,9 @@ export default async function UserProfilePage({ params }: ProfilePageProps) {
     : [];
 
   return (
-    <main className="min-h-screen bg-[var(--surface-base)] p-4 md:p-8">
+    <div className="min-h-screen bg-[var(--surface-base)]">
+      <AppNavbar />
+      <main className="p-4 md:p-8">
       <div className="max-w-4xl mx-auto space-y-6">
         <Card className="overflow-hidden">
           {/* Header / Banner Area */}
@@ -39,6 +65,9 @@ export default async function UserProfilePage({ params }: ProfilePageProps) {
                 size="xl"
                 className="border-4 border-[var(--surface-sunken)] shadow-sm"
               />
+              {currentUserId && currentUserId !== user.id && (
+                <ProfileFollowButton userId={user.id} initialIsFollowing={isFollowing} />
+              )}
             </div>
             
             <div className="space-y-1">
@@ -52,6 +81,27 @@ export default async function UserProfilePage({ params }: ProfilePageProps) {
           </CardHeader>
           
           <CardContent className="pt-6 space-y-6">
+            {/* Stats Row */}
+            <div className="flex flex-wrap items-center gap-6 py-4 border-y border-[var(--border-subtle)]">
+              <div className="flex flex-col items-center">
+                <Text className="font-bold text-lg">{followers}</Text>
+                <Text className="text-xs text-[var(--text-muted)] uppercase tracking-wider">Followers</Text>
+              </div>
+              <div className="flex flex-col items-center">
+                <Text className="font-bold text-lg">{following}</Text>
+                <Text className="text-xs text-[var(--text-muted)] uppercase tracking-wider">Following</Text>
+              </div>
+              <div className="h-8 w-px bg-[var(--border-subtle)] mx-2 hidden sm:block" />
+              <div className="flex flex-col items-center">
+                <Text className="font-bold text-lg">{user._count.stories}</Text>
+                <Text className="text-xs text-[var(--text-muted)] uppercase tracking-wider">Stories</Text>
+              </div>
+              <div className="flex flex-col items-center">
+                <Text className="font-bold text-lg">{totalLikes}</Text>
+                <Text className="text-xs text-[var(--text-muted)] uppercase tracking-wider">Likes</Text>
+              </div>
+            </div>
+
             <div>
               <Heading level="h4" className="mb-2 text-lg">About</Heading>
               {user.bio ? (
@@ -84,6 +134,7 @@ export default async function UserProfilePage({ params }: ProfilePageProps) {
           </CardContent>
         </Card>
       </div>
-    </main>
+      </main>
+    </div>
   );
 }

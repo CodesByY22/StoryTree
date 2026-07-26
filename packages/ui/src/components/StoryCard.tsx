@@ -23,7 +23,7 @@ export interface StoryCardProps {
 export const StoryCard = React.forwardRef<HTMLDivElement, StoryCardProps>(
   ({ id, title, snippet, authorName, authorAvatar, publishedAt, likesCount, bookmarksCount, isLiked, isBookmarked, onLike, onBookmark, onRead }, ref) => {
     return (
-      <Card ref={ref} className="w-full flex flex-col hover:border-[var(--border-hover)] transition-colors">
+      <Card ref={ref} className="w-full flex flex-col hover:shadow-xl hover:-translate-y-1 hover:bg-[var(--surface-overlay)] cursor-pointer transition-all duration-300 ease-out">
         <CardHeader className="pb-2 flex flex-row justify-between items-start gap-4">
           <div className="flex flex-col gap-1">
             <CardTitle className="text-xl line-clamp-2 cursor-pointer" onClick={() => onRead?.(id)}>{title}</CardTitle>

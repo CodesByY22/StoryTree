@@ -2,7 +2,12 @@ import { notFound, redirect } from "next/navigation";
 import { prisma } from "@repo/db";
 import { headers } from "next/headers";
 import { auth } from "../../../lib/auth"; // We can use the server-side auth here
-import EditorClient from "./EditorClient";
+import dynamic from "next/dynamic";
+import { LoadingSkeleton } from "@repo/ui";
+
+const EditorClient = dynamic(() => import("./EditorClient"), {
+  loading: () => <div className="min-h-screen bg-[var(--surface-base)] flex items-center justify-center p-8"><LoadingSkeleton className="w-full max-w-4xl h-96" /></div>
+});
 
 interface EditorPageProps {
   params: Promise<{
@@ -39,7 +44,11 @@ export default async function EditorPage({ params }: EditorPageProps) {
     <EditorClient
       storyId={story.id}
       initialTitle={story.title}
+      initialSubtitle={story.subtitle || ""}
       initialContent={story.content}
+      initialCoverImage={story.coverImage || ""}
+      initialGenre={story.genre || ""}
+      initialTags={story.tags}
       initialStatus={story.status}
       userId={session.user.id}
     />

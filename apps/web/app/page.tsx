@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Button, Text, Heading, Badge } from "@repo/ui";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -9,21 +10,19 @@ export default function Home() {
       <nav className="sticky top-0 z-[var(--z-sticky)] h-[var(--nav-height)] bg-[var(--nav-bg)] border-b border-[var(--nav-border)] backdrop-blur-[var(--blur-glass)] bg-opacity-80 flex items-center justify-between px-6 lg:px-12">
         <div className="flex items-center gap-8">
           <Heading level="h4" font="display" className="tracking-tight text-[var(--text-accent)]">StoryTree</Heading>
-          <div className="hidden md:flex gap-1">
-            {["Write", "Discover", "Community", "About"].map(link => (
-              <a 
-                key={link} 
-                href={`#${link.toLowerCase()}`}
-                className="px-[var(--space-3)] py-[var(--space-2)] text-[var(--nav-link-text)] hover:text-[var(--nav-link-hover-text)] hover:bg-[var(--nav-link-hover-bg)] rounded-[var(--radius-sm)] transition-[var(--motion-fast)] text-[var(--type-ui-sm)] font-medium"
-              >
-                {link}
-              </a>
-            ))}
+          <div className="hidden md:flex gap-4">
+            <Link href="/editor/new" className="text-[var(--nav-link-text)] hover:text-[var(--nav-link-hover-text)] text-sm font-medium transition-colors">Write</Link>
+            <Link href="/discover" className="text-[var(--nav-link-text)] hover:text-[var(--nav-link-hover-text)] text-sm font-medium transition-colors">Discover</Link>
+            <Link href="/dashboard" className="text-[var(--nav-link-text)] hover:text-[var(--nav-link-hover-text)] text-sm font-medium transition-colors">Community</Link>
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" className="hidden sm:inline-flex">Login</Button>
-          <Button variant="primary" size="sm">Get Started</Button>
+          <Link href="/auth/login" className="hidden sm:inline-flex">
+            <Button variant="ghost" size="sm">Login</Button>
+          </Link>
+          <Link href="/auth/signup">
+            <Button variant="primary" size="sm">Get Started</Button>
+          </Link>
         </div>
       </nav>
 
@@ -40,15 +39,46 @@ export default function Home() {
               A collaborative storytelling platform where one prompt inspires hundreds of unique stories. Plant your seed, watch the branches grow, and collaborate with writers worldwide.
             </Text>
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-              <Button variant="primary" size="lg">Start Writing</Button>
-              <Button variant="outline" size="lg">Explore Branches</Button>
+              <Link href="/editor/new">
+                <Button variant="primary" size="lg">Start Writing</Button>
+              </Link>
+              <Link href="/discover">
+                <Button variant="outline" size="lg">Explore Branches</Button>
+              </Link>
             </div>
           </div>
           <div className="flex-1 w-full flex justify-center">
-            {/* Illustration Placeholder */}
-            <div className="w-full max-w-md aspect-square bg-[var(--surface-raised)] border border-[var(--border-subtle)] rounded-[var(--radius-container)] shadow-[var(--shadow-xl)] flex items-center justify-center relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-green-500)]/20 to-[var(--color-amber-500)]/20 mix-blend-overlay" />
-              <Heading level="h4" variant="secondary" font="sans" className="opacity-50">Illustration</Heading>
+            {/* Hero Graphic */}
+            <div className="w-full max-w-md aspect-square bg-[var(--surface-raised)] border border-[var(--border-subtle)] rounded-[var(--radius-container)] shadow-[var(--shadow-xl)] flex items-center justify-center relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-green-500)]/20 to-[var(--color-amber-500)]/20 mix-blend-overlay transition-opacity duration-1000 group-hover:opacity-100 opacity-80" />
+              
+              {/* Graphic elements */}
+              <div className="absolute w-48 h-64 bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg shadow-2xl -rotate-12 translate-x-[-40px] translate-y-[-20px] transition-transform duration-700 group-hover:-rotate-6 group-hover:translate-x-[-30px] p-4 flex flex-col gap-2">
+                <div className="w-1/2 h-3 bg-[var(--surface-base)] rounded-full"></div>
+                <div className="w-full h-2 bg-[var(--surface-base)] rounded-full mt-2"></div>
+                <div className="w-3/4 h-2 bg-[var(--surface-base)] rounded-full"></div>
+                <div className="w-full h-2 bg-[var(--surface-base)] rounded-full"></div>
+              </div>
+              
+              <div className="absolute w-56 h-72 bg-[var(--surface-base)] border border-[var(--color-green-500)]/30 rounded-lg shadow-2xl z-10 p-6 flex flex-col gap-3 transition-transform duration-700 group-hover:scale-105">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[var(--color-green-500)] to-[var(--color-amber-500)]"></div>
+                  <div className="w-16 h-3 bg-[var(--surface-raised)] rounded-full"></div>
+                </div>
+                <Heading level="h4" className="text-xl">The First Branch</Heading>
+                <div className="w-full h-2 bg-[var(--surface-raised)] rounded-full mt-2"></div>
+                <div className="w-full h-2 bg-[var(--surface-raised)] rounded-full"></div>
+                <div className="w-4/5 h-2 bg-[var(--surface-raised)] rounded-full"></div>
+                <div className="w-full h-2 bg-[var(--surface-raised)] rounded-full"></div>
+                <div className="w-full h-2 bg-[var(--surface-raised)] rounded-full"></div>
+              </div>
+
+              <div className="absolute w-48 h-64 bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg shadow-2xl rotate-12 translate-x-[50px] translate-y-[30px] transition-transform duration-700 group-hover:rotate-6 group-hover:translate-x-[40px] p-4 flex flex-col gap-2">
+                <div className="w-1/3 h-3 bg-[var(--surface-base)] rounded-full"></div>
+                <div className="w-full h-2 bg-[var(--surface-base)] rounded-full mt-2"></div>
+                <div className="w-full h-2 bg-[var(--surface-base)] rounded-full"></div>
+                <div className="w-2/3 h-2 bg-[var(--surface-base)] rounded-full"></div>
+              </div>
             </div>
           </div>
         </section>
@@ -150,7 +180,9 @@ export default function Home() {
             <Heading level="h2" variant="inverse" font="display" className="text-4xl md:text-5xl z-10 relative">Ready to grow your story?</Heading>
             <Text size="lg" variant="inverse" className="opacity-80 max-w-md z-10 relative">Join thousands of writers collaborating on the next great adventure.</Text>
             <div className="z-10 relative">
-              <Button variant="primary" size="lg" className="bg-[var(--surface-base)] text-[var(--text-primary)] hover:bg-[var(--surface-raised)] border-transparent">Join StoryTree Now</Button>
+              <Link href="/auth/signup">
+                <Button variant="primary" size="lg" className="bg-[var(--surface-base)] text-[var(--text-primary)] hover:bg-[var(--surface-raised)] border-transparent">Join StoryTree Now</Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -167,24 +199,24 @@ export default function Home() {
           <div className="space-y-4">
             <Text font="mono" size="sm" variant="primary" className="uppercase tracking-widest text-xs">Platform</Text>
             <ul className="space-y-2">
-              <li><a href="#" className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-[var(--motion-fast)]">Explore</a></li>
-              <li><a href="#" className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-[var(--motion-fast)]">Writers</a></li>
-              <li><a href="#" className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-[var(--motion-fast)]">Community</a></li>
+              <li><Link href="/discover" className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-[var(--motion-fast)]">Explore</Link></li>
+              <li><Link href="/search" className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-[var(--motion-fast)]">Writers</Link></li>
+              <li><Link href="/dashboard" className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-[var(--motion-fast)]">Community</Link></li>
             </ul>
           </div>
           <div className="space-y-4">
             <Text font="mono" size="sm" variant="primary" className="uppercase tracking-widest text-xs">Resources</Text>
             <ul className="space-y-2">
-              <li><a href="#" className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-[var(--motion-fast)]">Documentation</a></li>
-              <li><a href="/showcase" className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-[var(--motion-fast)]">Design System</a></li>
-              <li><a href="#" className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-[var(--motion-fast)]">Blog</a></li>
+              <li><span className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] cursor-not-allowed">Documentation</span></li>
+              <li><Link href="/showcase" className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-[var(--motion-fast)]">Design System</Link></li>
+              <li><span className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] cursor-not-allowed">Blog</span></li>
             </ul>
           </div>
           <div className="space-y-4">
             <Text font="mono" size="sm" variant="primary" className="uppercase tracking-widest text-xs">Legal</Text>
             <ul className="space-y-2">
-              <li><a href="#" className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-[var(--motion-fast)]">Privacy Policy</a></li>
-              <li><a href="#" className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-[var(--motion-fast)]">Terms of Service</a></li>
+              <li><span className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] cursor-not-allowed">Privacy Policy</span></li>
+              <li><span className="text-[var(--type-ui-sm)] text-[var(--text-secondary)] cursor-not-allowed">Terms of Service</span></li>
             </ul>
           </div>
         </div>

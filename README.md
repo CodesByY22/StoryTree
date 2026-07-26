@@ -134,6 +134,40 @@ pnpm check-types
 
 ---
 
+## 🚀 Deployment (Public Beta)
+
+StoryTree is configured for immediate deployment to **Vercel** as the primary frontend hosting provider.
+
+### 1. Prerequisites
+- A Vercel Account
+- A PostgreSQL Database (Neon or Supabase)
+- A Cloudinary Account for image hosting
+- A PostHog Account (Optional, for analytics)
+- A Sentry Account (Optional, for monitoring)
+
+### 2. Environment Setup
+Copy the `.env.example` file located in `apps/web/.env.example` to `apps/web/.env.local` for local development, and configure these variables in your Vercel project settings.
+
+```bash
+DATABASE_URL="postgresql://user:password@hostname/database"
+BETTER_AUTH_SECRET="your-generated-secret"
+BETTER_AUTH_URL="https://your-domain.com"
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="your-cloud-name"
+NEXT_PUBLIC_POSTHOG_KEY="your-posthog-key"
+NEXT_PUBLIC_POSTHOG_HOST="https://us.i.posthog.com"
+SENTRY_AUTH_TOKEN="your-sentry-token"
+```
+
+### 3. Vercel Deployment
+1. Import the repository into Vercel.
+2. The `vercel.json` file is already provided in the root directory.
+3. Ensure the **Framework Preset** is set to Next.js.
+4. Set the Root Directory to `apps/web` (or leave as root since turborepo handles it, but typically it is easiest to configure the build command via turbo in root).
+5. Add the environment variables from Step 2.
+6. Deploy!
+
+---
+
 ## 🛣 Roadmap
 
 - ✅ Repository Setup

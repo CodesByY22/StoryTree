@@ -9,10 +9,10 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         ref={ref}
         className={`
           rounded-[var(--card-radius)] 
-          border-[length:var(--card-border-width)] border-[var(--card-border)]
           bg-[var(--card-bg)] 
           text-[var(--text-primary)]
-          shadow-[var(--card-shadow)]
+          shadow-sm border border-[var(--border-subtle)]
+          transition-all duration-300 ease-out
           ${className || ""}
         `}
         {...props}

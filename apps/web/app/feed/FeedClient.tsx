@@ -158,7 +158,7 @@ export function FeedClient({ initialData, initialCursor, userId }: FeedClientPro
             {...item}
             onLike={handleLike}
             onBookmark={handleBookmark}
-            onRead={() => router.push(`/editor/${item.id}`)} // Note: In reality, read view is different from editor view, but for now we'll route to editor or create a viewer route
+            onRead={() => router.push(`/story/${item.id}`)}
           />
         ))
       )}

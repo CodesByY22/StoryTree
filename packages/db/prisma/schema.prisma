@@ -26,10 +26,20 @@ model User {
   stories        Story[]
   likes          Like[]
   bookmarks      Bookmark[]
+  
+  followers      Follow[] @relation("Followers")
+  following      Follow[] @relation("Following")
+  comments       Comment[]
+  notifications  Notification[] @relation("UserNotifications")
+  notifiedBy     Notification[] @relation("ActorNotifications")
+  readingHistory ReadingHistory[]
+
   Session        Session[]
   Account        Account[]
 
   @@unique([email])
+  @@index([username])
+  @@index([displayName])
   @@map("user")
 }
 
@@ -86,7 +96,11 @@ enum StoryStatus {
 model Story {
   id          String      @id @default(uuid())
   title       String
+  subtitle    String?
   content     String      @db.Text
+  coverImage  String?
+  genre       String?
+  tags        String[]
   status      StoryStatus @default(DRAFT)
   
   authorId    String
@@ -98,7 +112,12 @@ model Story {
 
   likes       Like[]
   bookmarks   Bookmark[]
+  comments    Comment[]
+  readingHistory ReadingHistory[]
 
+  @@index([title])
+  @@index([genre])
+  @@index([status, publishedAt(sort: Desc)])
   @@map("story")
 }
 
@@ -126,4 +145,81 @@ model Bookmark {
 
   @@unique([storyId, userId])
   @@map("bookmark")
+}
+
+model Follow {
+  id          String   @id @default(uuid())
+  followerId  String
+  followingId String
+  createdAt   DateTime @default(now())
+
+  follower    User     @relation("Following", fields: [followerId], references: [id], onDelete: Cascade)
+  following   User     @relation("Followers", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followingId])
+  @@index([followerId])
+  @@index([followingId])
+  @@map("follow")
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  authorId  String
+  storyId   String
+  parentId  String?
+
+  author    User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  story     Story     @relation(fields: [storyId], references: [id], onDelete: Cascade)
+  parent    Comment?  @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies   Comment[] @relation("CommentReplies")
+
+  @@index([storyId])
+  @@index([authorId])
+  @@index([parentId])
+  @@map("comment")
+}
+
+enum NotificationType {
+  FOLLOW
+  LIKE
+  COMMENT
+  REPLY
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  type      NotificationType
+  isRead    Boolean          @default(false)
+  createdAt DateTime         @default(now())
+
+  userId    String
+  actorId   String
+  storyId   String?
+  commentId String?
+
+  user      User     @relation("UserNotifications", fields: [userId], references: [id], onDelete: Cascade)
+  actor     User     @relation("ActorNotifications", fields: [actorId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead])
+  @@map("notification")
+}
+
+model ReadingHistory {
+  id        String   @id @default(uuid())
+  userId    String
+  storyId   String
+  progress  Int      @default(0) // percentage 0-100
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  story     Story    @relation(fields: [storyId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, storyId])
+  @@index([userId, updatedAt(sort: Desc)])
+  @@map("reading_history")
 }

@@ -42,6 +42,8 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
             src={src}
             alt={alt || "Avatar"}
             className="h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
           />
         ) : (
           <span className="font-medium text-[var(--text-muted)]">

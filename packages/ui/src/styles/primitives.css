@@ -55,10 +55,10 @@
   --color-genre-drama:    #c490d1;
 
   /* 2. Typography */
-  --font-sans: 'Inter', sans-serif;
-  --font-story: 'Lora', serif;
-  --font-display: 'Playfair Display', serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: var(--font-inter), 'Inter', sans-serif;
+  --font-story: var(--font-lora), 'Lora', serif;
+  --font-display: var(--font-playfair), 'Playfair Display', serif;
+  --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
 
   --type-ui-xs: 0.6875rem; /* 11px */
   --type-ui-sm: 0.8125rem; /* 13px */
