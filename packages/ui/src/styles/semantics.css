@@ -2,11 +2,107 @@
 /* This file assigns meaning to primitives and supports light/dark themes. */
 
 :root {
-  /* Light Theme / Default Semantics */
+  /* ----------------------------------------------------- */
+  /* LIGHT THEME (Default)                                 */
+  /* ----------------------------------------------------- */
+  
+  /* 1. Surfaces */
+  --surface-base: var(--color-neutral-50);
+  --surface-raised: var(--color-neutral-100);
+  --surface-overlay: var(--color-neutral-50);
+  --surface-sunken: var(--color-neutral-200);
+  --surface-glass: rgba(250, 250, 246, 0.8); /* neutral-50 with 80% opacity */
+  --surface-reading: var(--color-neutral-50);
+
+  /* 2. Text */
+  --text-primary: var(--color-neutral-950);
+  --text-secondary: var(--color-neutral-700);
+  --text-tertiary: var(--color-neutral-500);
+  --text-disabled: var(--color-neutral-400);
+  --text-inverse: var(--color-neutral-50);
+  --text-link: var(--color-green-600);
+  --text-accent: var(--color-amber-600);
+  --text-story: var(--color-neutral-900);
+
+  /* 3. Borders */
+  --border-subtle: var(--color-neutral-200);
+  --border-default: var(--color-neutral-300);
+  --border-strong: var(--color-neutral-400);
+  --border-accent: var(--color-green-500);
+
+  /* 4. Interactive States (Backgrounds) */
+  --interactive-hover: var(--color-neutral-100);
+  --interactive-pressed: var(--color-neutral-200);
+  --interactive-focus: var(--color-green-500);
+  --interactive-selected: var(--color-green-100);
+
+  /* 5. Feedback Semantics */
+  --semantic-success: var(--color-success);
+  --semantic-warning: var(--color-warning);
+  --semantic-error: var(--color-error);
+  --semantic-info: var(--color-info);
+
+  /* 6. Genre Semantics */
+  --semantic-genre-horror: var(--color-genre-horror);
+  --semantic-genre-scifi: var(--color-genre-scifi);
+  --semantic-genre-fantasy: var(--color-genre-fantasy);
+  --semantic-genre-romance: var(--color-genre-romance);
+  --semantic-genre-thriller: var(--color-genre-thriller);
+  --semantic-genre-literary: var(--color-genre-literary);
+  --semantic-genre-comedy: var(--color-genre-comedy);
+  --semantic-genre-drama: var(--color-genre-drama);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Dark Theme Semantics */
+    /* ----------------------------------------------------- */
+    /* DARK THEME                                            */
+    /* ----------------------------------------------------- */
+    
+    /* 1. Surfaces */
+    --surface-base: var(--color-neutral-950);
+    --surface-raised: var(--color-neutral-900);
+    --surface-overlay: var(--color-neutral-800);
+    --surface-sunken: #000000;
+    --surface-glass: rgba(13, 13, 11, 0.8); /* neutral-950 with 80% opacity */
+    --surface-reading: var(--color-neutral-950);
+
+    /* 2. Text */
+    --text-primary: var(--color-neutral-50);
+    --text-secondary: var(--color-neutral-300);
+    --text-tertiary: var(--color-neutral-400);
+    --text-disabled: var(--color-neutral-600);
+    --text-inverse: var(--color-neutral-950);
+    --text-link: var(--color-green-400);
+    --text-accent: var(--color-amber-400);
+    --text-story: var(--color-neutral-100);
+
+    /* 3. Borders */
+    --border-subtle: var(--color-neutral-800);
+    --border-default: var(--color-neutral-700);
+    --border-strong: var(--color-neutral-600);
+    --border-accent: var(--color-green-400);
+
+    /* 4. Interactive States (Backgrounds) */
+    --interactive-hover: var(--color-neutral-900);
+    --interactive-pressed: var(--color-neutral-800);
+    --interactive-focus: var(--color-green-400);
+    --interactive-selected: var(--color-green-900);
+
+    /* 5. Feedback Semantics */
+    --semantic-success: var(--color-success);
+    --semantic-warning: var(--color-warning);
+    --semantic-error: var(--color-error);
+    --semantic-info: var(--color-info);
+
+    /* 6. Genre Semantics */
+    --semantic-genre-horror: var(--color-genre-horror);
+    --semantic-genre-scifi: var(--color-genre-scifi);
+    --semantic-genre-fantasy: var(--color-genre-fantasy);
+    --semantic-genre-romance: var(--color-genre-romance);
+    --semantic-genre-thriller: var(--color-genre-thriller);
+    --semantic-genre-literary: var(--color-genre-literary);
+    --semantic-genre-comedy: var(--color-genre-comedy);
+    --semantic-genre-drama: var(--color-genre-drama);
   }
 }
