@@ -77,6 +77,8 @@ export async function toggleLike(storyId: string, userId: string) {
       data: { storyId, userId },
     });
   }
+
+  revalidatePath("/feed");
 }
 
 export async function toggleBookmark(storyId: string, userId: string) {
@@ -97,4 +99,6 @@ export async function toggleBookmark(storyId: string, userId: string) {
       data: { storyId, userId },
     });
   }
+
+  revalidatePath("/feed");
 }
