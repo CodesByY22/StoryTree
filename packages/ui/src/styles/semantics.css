@@ -1,0 +1,12 @@
+/* StoryTree Semantic Tokens (Tier 2) */
+/* This file assigns meaning to primitives and supports light/dark themes. */
+
+:root {
+  /* Light Theme / Default Semantics */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Theme Semantics */
+  }
+}

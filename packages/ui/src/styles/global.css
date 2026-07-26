@@ -1,0 +1,12 @@
+/* StoryTree Global Styles (Master Entry Point) */
+
+@import "tailwindcss";
+
+@import "./primitives.css";
+@import "./semantics.css";
+@import "./components.css";
+@import "./utilities.css";
+
+@theme {
+  /* Tailwind v4 mappings will go here in Phase 2 */
+}
