@@ -16,7 +16,7 @@ jobs:
       BETTER_AUTH_URL: "http://localhost:3000"
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install pnpm
         uses: pnpm/action-setup@v3
