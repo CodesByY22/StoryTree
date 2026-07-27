@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { Input } from "./Input";
 
@@ -64,3 +65,4 @@ export function SearchBar({ onSearch, isLoading, className, value, defaultValue,
     </div>
   );
 }
+

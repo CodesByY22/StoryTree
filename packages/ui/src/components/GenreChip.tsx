@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { Badge } from "./Badge";
 
@@ -18,3 +19,4 @@ export function GenreChip({ genre, onClick, selected }: GenreChipProps) {
     </Badge>
   );
 }
+

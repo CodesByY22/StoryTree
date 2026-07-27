@@ -1,8 +1,21 @@
 {
   "name": "@repo/typescript-config",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "StoryTree Collaborative Storytelling Platform",
+  "author": "StoryTree Contributors",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StoryTree/StoryTree.git"
+  },
+  "keywords": [
+    "storytree",
+    "storytelling",
+    "platform",
+    "nextjs",
+    "turborepo"
+  ],
+  "private": true,
   "publishConfig": {
     "access": "public"
   }

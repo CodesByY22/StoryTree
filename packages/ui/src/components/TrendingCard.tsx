@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Card, CardContent } from "./Card";
 import { Text } from "./Text";
@@ -53,3 +54,4 @@ export const TrendingCard: React.FC<TrendingCardProps> = ({
     </Card>
   );
 };
+

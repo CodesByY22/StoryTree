@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { Button } from "./Button";
 
@@ -37,3 +38,4 @@ export function EditorToolbar({ onInsert }: EditorToolbarProps) {
     </div>
   );
 }
+

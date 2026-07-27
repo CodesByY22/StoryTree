@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { Badge } from "./Badge";
 import { Input } from "./Input";
@@ -54,3 +55,4 @@ export function TagInput({ tags, onChange, maxTags = 5, maxTagLength = 20, place
     </div>
   );
 }
+

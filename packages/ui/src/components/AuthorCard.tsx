@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { Avatar } from "./Avatar";
 
@@ -29,3 +30,4 @@ export function AuthorCard({ name, username, image, bio, onClick }: AuthorCardPr
     </div>
   );
 }
+

@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { Card, CardHeader, CardContent, CardTitle } from "./Card";
 import { Avatar } from "./Avatar";
@@ -58,3 +59,4 @@ export const StoryCard = React.forwardRef<HTMLDivElement, StoryCardProps>(
   }
 );
 StoryCard.displayName = "StoryCard";
+

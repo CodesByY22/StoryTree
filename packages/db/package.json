@@ -1,6 +1,20 @@
 {
   "name": "@repo/db",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "StoryTree Collaborative Storytelling Platform",
+  "author": "StoryTree Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StoryTree/StoryTree.git"
+  },
+  "keywords": [
+    "storytree",
+    "storytelling",
+    "platform",
+    "nextjs",
+    "turborepo"
+  ],
   "private": true,
   "type": "module",
   "exports": {
@@ -14,19 +28,25 @@
     "dev": "tsc -w",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
+    "seed": "prisma db seed",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
     "postinstall": "prisma generate"
   },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
   "dependencies": {
-    "@prisma/client": "^6.4.1",
-    "@prisma/adapter-pg": "^6.4.1"
+    "@prisma/adapter-pg": "^6.4.1",
+    "@prisma/client": "^6.4.1"
   },
   "devDependencies": {
-    "prisma": "^6.4.1",
-    "@repo/typescript-config": "workspace:*",
+    "@faker-js/faker": "^10.5.0",
     "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/node": "^22.0.0",
+    "prisma": "^6.4.1",
+    "tsx": "^4.23.1",
     "typescript": "5.9.2"
   }
 }

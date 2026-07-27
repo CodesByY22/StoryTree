@@ -1,6 +1,20 @@
 {
   "name": "@repo/eslint-config",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "StoryTree Collaborative Storytelling Platform",
+  "author": "StoryTree Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StoryTree/StoryTree.git"
+  },
+  "keywords": [
+    "storytree",
+    "storytelling",
+    "platform",
+    "nextjs",
+    "turborepo"
+  ],
   "type": "module",
   "private": true,
   "exports": {

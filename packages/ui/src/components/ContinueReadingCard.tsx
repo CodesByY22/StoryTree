@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Card } from "./Card";
 import { Text } from "./Text";
@@ -55,3 +56,4 @@ export const ContinueReadingCard: React.FC<ContinueReadingCardProps> = ({
     </Card>
   );
 };
+
