@@ -25,10 +25,13 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w",
+    "clean": "rm -rf dist",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
-    "seed": "prisma db seed",
+    "seed": "tsx prisma/seed.ts",
+    "seed:small": "cross-env SEED_MODE=small tsx prisma/seed.ts",
+    "seed:medium": "cross-env SEED_MODE=medium tsx prisma/seed.ts",
+    "seed:large": "cross-env SEED_MODE=large tsx prisma/seed.ts",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
     "postinstall": "prisma generate"
@@ -45,6 +48,7 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "^22.0.0",
+    "cross-env": "^10.1.0",
     "prisma": "^6.4.1",
     "tsx": "^4.23.1",
     "typescript": "5.9.2"

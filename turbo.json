@@ -5,7 +5,8 @@
     "NODE_ENV",
     "DATABASE_URL",
     "BETTER_AUTH_SECRET",
-    "BETTER_AUTH_URL"
+    "BETTER_AUTH_URL",
+    "SEED_MODE"
   ],
   "tasks": {
     "build": {
